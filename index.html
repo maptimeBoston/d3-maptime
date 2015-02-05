@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Mapping with D3 - Maptime Boston</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+
+		<style>
+			.reveal .slides .left{ text-align: left; }
+		</style>
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>Mapping with D3</h1>
+					<h3>A gentle introduction</h3>
+					<p>
+						<small>Maptime Boston</small>
+					</p>
+				</section>
+
+				<section>
+					<p>Follow along!</p>
+					<p><a href="http://maptimeboston.github.io/d3-maptime" target="_blank">maptimeboston.github.io/d3-maptime</a></p>
+					<p>Or get the code:</p>
+					<p><a href="http://github.com/maptimeboston/d3-maptime" target="_blank">github.com/maptimeboston/d3-maptime</a></p>
+				</section>
+
+				<section>
+					<section>
+						<h2>Before we begin...</h2>
+						<p>D3 is <strong>HARD</strong> for beginners. Here at Maptime we'll try to make enough sense of it to get you on your way to making amazing maps, but we strongly recommend spending time with <a href="#/2/1">more thorough guides and examples.</a></p>
+					</section>
+					<section>
+						<ul>
+							<li>Link 1</li>
+							<li>Link 2</li>
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<h2>What is <a href="http://d3js.org" target="_blank">D3.js</a>?</h2>
+					<blockquote class="left" cite="http://d3js.org">
+						&ldquo;D3.js is a JavaScript library for manipulating documents based on data. D3 helps you bring data to life using HTML, SVG and CSS. D3’s emphasis on web standards gives you the full capabilities of modern browsers without tying yourself to a proprietary framework, combining powerful visualization components and a data-driven approach to DOM manipulation.&rdquo;
+					</blockquote>
+				</section>
+
+				<section>
+					<h1>What the heck does that mean?</h1>
+				</section>
+
+				<section>
+					<h2>It means taking data...</h2>
+					<table>
+						<thead>
+							<tr>
+								<th>City</th>
+								<th># of rats</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Cambridge</td>
+								<td>400</td>
+							<tr>
+							<tr>
+								<td>Boston</td>
+								<td>900</td>
+							<tr>
+							<tr>
+								<td>Somerville</td>
+								<td>300</td>
+							<tr>
+							<tr>
+								<td>Brookline</td>
+								<td>600</td>
+							<tr>
+						</tbody>
+					</table>
+				</section>
+
+				<section>
+					<h2>...binding it to HTML or SVG elements...</h2>
+					<pre><code>
+<rect x="0" width="15" fill="#d1c9b8"></rect>
+<rect x="25" width="15" fill="#d1c9b8"></rect>
+<rect x="50" width="15" fill="#d1c9b8"></rect>
+<rect x="75" width="15" fill="#d1c9b8"></rect>
+					</code></pre>
+				</section>
+
+				<section>
+					<h2>...and manipulating those elements based on the data.</h2>
+					<svg width="200" height="300" style="margin-left:-100px">
+						<rect x="105" width="15" height="60" y="90" fill="#d1c9b8"></rect>
+						<rect x="130" width="15" height="135" y="15" fill="#d1c9b8"></rect>
+						<rect x="155" width="15" height="45" y="105" fill="#d1c9b8"></rect>
+						<rect x="180" width="15" height="90" y="60" fill="#d1c9b8"></rect>
+						<line x1="100" x2="200" y1="150" y2="150" stroke="white"></line>
+						<line x1="100" x2="100" y1="150" y2="0" stroke="white"></line>
+						<text font-size="12" text-anchor="end" transform="translate(115,160) rotate(-45)" fill="white">Cambridge</text>
+						<text font-size="12" text-anchor="end" transform="translate(140,160) rotate(-45)" fill="white">Boston</text>
+						<text font-size="12" text-anchor="end" transform="translate(165,160) rotate(-45)" fill="white">Somerville</text>
+						<text font-size="12" text-anchor="end" transform="translate(190,160) rotate(-45)" fill="white">Brookline</text>
+						<text font-size="12" text-anchor="end" transform="translate(90,40) rotate(-90)" fill="white">Number of rats</text>
+					</svg>
+				</section>
+
+				<section>
+					<h2>Simple, right?</h2>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
