@@ -15,7 +15,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
 		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+		<link rel="stylesheet" href="css/theme/beige.css" id="theme">
 
 		<style>
 			.reveal .slides .left{ text-align: left; }
@@ -46,9 +46,9 @@
 			<div class="slides">
 				<section>
 					<h1>Mapping with D3</h1>
-					<h3>A gentle introduction</h3>
+					<h3>A gentle introduction, if that's possible</h3>
 					<p>
-						<small>Maptime Boston</small>
+						<small>Andy Woodruff for Maptime Boston</small>
 					</p>
 				</section>
 
@@ -73,7 +73,8 @@
 				</section>
 
 				<section>
-					<h2>What is <a href="http://d3js.org" target="_blank">D3.js</a>?</h2>
+					<h2>What is D3?</h2>
+					<p>D3 is <a href="http://d3js.org" target="_blank">Data-Driven Documents</a>:</p>
 					<blockquote class="left" cite="http://d3js.org">
 						&ldquo;D3.js is a JavaScript library for manipulating documents based on data. D3 helps you bring data to life using HTML, SVG and CSS. D3’s emphasis on web standards gives you the full capabilities of modern browsers without tying yourself to a proprietary framework, combining powerful visualization components and a data-driven approach to DOM manipulation.&rdquo;
 					</blockquote>
@@ -130,18 +131,737 @@
 						<rect x="130" width="15" height="135" y="15" fill="#d1c9b8"></rect>
 						<rect x="155" width="15" height="45" y="105" fill="#d1c9b8"></rect>
 						<rect x="180" width="15" height="90" y="60" fill="#d1c9b8"></rect>
-						<line x1="100" x2="200" y1="150" y2="150" stroke="white"></line>
-						<line x1="100" x2="100" y1="150" y2="0" stroke="white"></line>
-						<text font-size="12" text-anchor="end" transform="translate(115,160) rotate(-45)" fill="white">Cambridge</text>
-						<text font-size="12" text-anchor="end" transform="translate(140,160) rotate(-45)" fill="white">Boston</text>
-						<text font-size="12" text-anchor="end" transform="translate(165,160) rotate(-45)" fill="white">Somerville</text>
-						<text font-size="12" text-anchor="end" transform="translate(190,160) rotate(-45)" fill="white">Brookline</text>
-						<text font-size="12" text-anchor="end" transform="translate(90,40) rotate(-90)" fill="white">Number of rats</text>
+						<line x1="100" x2="200" y1="150" y2="150" stroke="#666"></line>
+						<line x1="100" x2="100" y1="150" y2="0" stroke="#666"></line>
+						<text font-size="12" text-anchor="end" transform="translate(115,160) rotate(-45)" fill="#666">Cambridge</text>
+						<text font-size="12" text-anchor="end" transform="translate(140,160) rotate(-45)" fill="#666">Boston</text>
+						<text font-size="12" text-anchor="end" transform="translate(165,160) rotate(-45)" fill="#666">Somerville</text>
+						<text font-size="12" text-anchor="end" transform="translate(190,160) rotate(-45)" fill="#666">Brookline</text>
+						<text font-size="12" text-anchor="end" transform="translate(90,40) rotate(-90)" fill="#666">Number of rats</text>
 					</svg>
 				</section>
 
 				<section>
 					<h2>Simple, right?</h2>
+					<p>There's more to it, of course, but building on that core concept leads to <a href="https://github.com/mbostock/d3/wiki/Gallery" target="_blank">spectacular things</a>.</p>
+				</section>
+
+				<section>
+					<p>D3 was created by <a href="http://bost.ocks.org/mike/" target="_blank">Mike Bostock</a> using his amazing brain. It is an <a href="https://github.com/mbostock/d3" target="_blank">open-source</a> library with many additional <a href="https://github.com/mbostock/d3/graphs/contributors" target="_blank">contributors</a>. (As as a mapper, you will esepcially be awed by <a href="http://www.jasondavies.com/" target="_blank">Jason Davies</a> and his contributions.)</p>
+				</section>
+
+				<section>
+					<h2>D3 is not a graphical representation</h2>
+					<p>D3 is not a magic tool that draws and styles charts, maps, etc. Rather, it provides a means for <strong>YOU</strong> to create and style web-standard documents based on your data.</p>
+					<p>It's not about charts, nor maps, nor any particular kind of graphic. It's more about the data. You can use it for almost anything.</p>
+				</section>
+
+				<section>
+					<p>(But let's stick to maps and charts for now.)</p>
+				</section>
+
+				<section>
+					<h2>Enough introduction.</h2>
+					<h2>Let's make something!</h2>
+				</section>
+
+				<section>
+					<p>[insert some crazy example here]</p>
+				</section>
+
+				<section>
+					<p>Maybe we should start smaller. How about that bar chart from a few slides back?</p>
+					<svg width="200" height="300" style="margin-left:-100px">
+						<rect x="105" width="15" height="60" y="90" fill="#d1c9b8"></rect>
+						<rect x="130" width="15" height="135" y="15" fill="#d1c9b8"></rect>
+						<rect x="155" width="15" height="45" y="105" fill="#d1c9b8"></rect>
+						<rect x="180" width="15" height="90" y="60" fill="#d1c9b8"></rect>
+						<line x1="100" x2="200" y1="150" y2="150" stroke="#666"></line>
+						<line x1="100" x2="100" y1="150" y2="0" stroke="#666"></line>
+						<text font-size="12" text-anchor="end" transform="translate(115,160) rotate(-45)" fill="#666">Cambridge</text>
+						<text font-size="12" text-anchor="end" transform="translate(140,160) rotate(-45)" fill="#666">Boston</text>
+						<text font-size="12" text-anchor="end" transform="translate(165,160) rotate(-45)" fill="#666">Somerville</text>
+						<text font-size="12" text-anchor="end" transform="translate(190,160) rotate(-45)" fill="#666">Brookline</text>
+						<text font-size="12" text-anchor="end" transform="translate(90,40) rotate(-90)" fill="#666">Number of rats</text>
+					</svg>
+				</section>
+
+				<section>
+					<p>Lay down some boilerplate HTML and load the D3 library.</p>
+					<pre><code>
+&lt;html&gt;
+&lt;head&gt;
+  <title>A D3 chart</title>
+  <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+&lt;/head&gt;
+&lt;body&gt;
+  <script>
+  // our code will go here
+  </script>
+&lt;/body&gt;
+&lt;/html&gt;
+					</code></pre>
+				</section>
+
+				<section>
+					<p>Let's begin with some <strong>data</strong>. We'll use those rat numbers from the earlier table. Inside the <code>&lt;script&gt;</code> tag, create a simple array of the numbers.</p>
+					<pre><code>
+var ratData = [ 400, 900, 300, 600 ];
+					</code></pre>
+				</section>
+
+				<section>
+					<p>Now let's make some SVG elements to which the data will be attached.</p>
+					<pre><code>
+&lt;html&gt;
+&lt;head&gt;
+  <title>A D3 chart</title>
+  <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+&lt;/head&gt;
+&lt;body&gt;
+
+  <svg width="100" height="150">
+    <rect x="0" width="15" fill="#d1c9b8"></rect>
+    <rect x="25" width="15" fill="#d1c9b8"></rect>
+    <rect x="50" width="15" fill="#d1c9b8"></rect>
+    <rect x="75" width="15" fill="#d1c9b8"></rect>
+  </svg>
+
+  <script>
+    var ratData = [ 400, 900, 300, 600 ];
+  </script>
+
+&lt;/body&gt;
+&lt;/html&gt;
+					</code></pre>
+				</section>
+
+				<section>
+					<p>Back in the <code>&lt;script&gt;</code>, it's show time.</p>
+					<pre><code>
+var ratData = [ 400, 900, 300, 600 ];
+
+d3.selectAll( "rect" )
+  .data( ratData )
+  .attr( "height", function(d){
+    return d/10 * 1.5;
+  })
+  .attr( "y", function(d){
+    return 150 - d/10 * 1.5;
+  });
+					</code></pre>
+				</section>
+
+				<section>
+					<h1>What just happened?</h1>
+				</section>
+
+				<section>
+					<pre><code>d3.selectAll( "rect" )</code></pre>
+					<p>D3 has <code>select()</code> and <code>selectAll()</code> methods to find single or multiple DOM elements, respectively. This works much like jQuery.</p>
+					<pre><code>
+d3.selectAll( "rect" ); // select all SVG rect elements
+d3.select( "#boston" ); // select an element where id='boston'
+d3.selectAll( ".bar" ); // select all elements with the class 'bar'
+					</code></pre>
+					<p>Since <code>selectAll("rect")</code> finds multiple elements, everything in the chain following this will be happening to each of those elements.</p>
+				</section>
+
+				<section>
+					<pre><code>.data( ratData )</code></pre>
+					<p>The <code>data()</code> method is the very soul of D3. With it, an array of data is bound to DOM elements.</p>
+					<p>In your web inspector, see that the data has been directly attached to the <code>rect</code> elements as a <code>__data__</code> property.</p>
+					<img src="images/element_data.jpg"/>
+				</section>
+
+				<section>
+					<p>In the simplest case, array data is joined to elements in order. So our first <code>rect</code> gets a value of 400, the second 900, and so on. But there are powerful, more sophisticated ways of joining data to elements and specifying which elements get which data values.</p>
+				</section>
+
+				<section>
+					<pre><code>.attr( ... )</code></pre>
+					<p>Again like jQuery, D3 has methods to get and set element attributes and styles. They can be used to set hard-coded values...</p>
+					<pre><code>
+var el = d3.select( "rect" );
+
+el.attr( "height", 10 ); // set the rectangle's height attribute to 10
+el.style( "opacity", 0.5 ); // set a CSS style
+el.attr( "height" ); // returns 10
+el.style( "opacity" ); // returns .5
+					</code></pre>
+				</section>
+
+				<section>
+					<p>...or they can set values based on the element's <strong>data</strong> by passing a function, which is what we did.</p>
+					<pre><code>
+.attr( "height", function(d){
+  return d/10 * 1.5;
+})
+					</code></pre>
+					<p>For each element, the function will be invoked with <code>d</code> being its data value (in our case, a number like 400). Whatever the function returns is what the "height" attribute will be set to. If you do the math, our rectangles end up with heights of 60, 135, 45, and 90.</p>
+				</section>
+
+				<section>
+					<pre><code>
+.attr( "y", function(d){
+  return 150 - d/10 * 1.5;
+});
+					</code></pre>
+					<p>Finally, we do a similar thing for the rectangle's <code>y</code> attribute so that it's aligned to the bottom of our 150-pixel high SVG. (Otherwise, the bars would hang down from the top.)</p>
+				</section>
+
+				<section>
+					<p>Notice that D3 uses handy method chaining. Methods such as data() and attr() return the selection, allowing us to do multiple things in a row without having to reselect the elements.</p>
+				</section>
+
+				<section>
+					<h2>You made a chart with D3! Hooray!</h2>
+					<h3>#ratchart</h3>
+				</section>
+
+				<section>
+					<h1>Ready to get confused?</h1>
+				</section>
+
+				<section>
+					<h2>Creating elements</h2>
+					<p>It's more often the case that you don't have your data-driven elements pre-baked into the page, but rather create them on the fly. Let's give that a try. Start with another empty HTML page.</p>
+					<pre><code>
+&lt;html&gt;
+&lt;head&gt;
+  <title>A D3 chart</title>
+  <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+&lt;/head&gt;
+&lt;body&gt;
+  <script>
+  // our code will go here
+  </script>
+&lt;/body&gt;
+&lt;/html&gt;
+					</code></pre>
+				</section>
+
+				<section>
+					<p>Deep breath. Here's code for the same chart. Don't worry, we'll walk through it all!</p>
+					<pre><code>
+var ratData = [ 400, 900, 300, 600 ]; // looks familiar!
+
+var svg = d3.select( "body" )
+            .append( "svg" )
+              .attr( "width", 500 )
+              .attr( "height", 150 );
+
+svg.selectAll( "rect" )
+  .data( ratData )
+  .enter()
+  .append( "rect" )
+    .attr( "x", function(d,i){
+      return i*25;
+    })
+    .attr( "width", 15 )
+    .attr( "fill", "#d1c9b8" )
+    .attr( "height", function(d){
+      return d/10 * 1.5;
+    })
+    .attr( "y", function(d){
+      return 150 - d/10 * 1.5;
+    });
+					</code></pre>
+				</section>
+
+				<section>
+					<pre><code>
+var svg = d3.select( "body" )
+            .append( "svg" )
+              .attr( "width", 500 )
+              .attr( "height", 150 );
+					</code></pre>
+					<p>First we have to create an SVG element into which our bar rectangles will go. This will look somewhat familiar if you've used jQuery. Select the body and append an svg to it. But there are two key differences from jQuery:</p>
+				</section>
+
+				<section>
+					<p>1. D3's <code>append()</code> takes only the name of the element, not actual markup or content.</p>
+							<pre><code>
+d3.select( "body" ).append( "svg" )
+// versus
+$( "body" ).append( "&lt;svg&gt;" )
+							</code></pre>
+				</section>
+
+				<section>
+					<p>2. D3's <code>append()</code> returns the appended element, not the parent. Thus the attributes we set in the next lines will apply to the SVG, not the body (as they would with jQuery).</p>
+							<pre><code>
+var svg = d3.select( "body" )
+            .append( "svg" ) // below here applies to the svg
+              .attr( "width", 100 )
+              .attr( "height", 150 );
+					</code></pre>
+					<p>And because in the end those methods are returning the SVG, our <code>svg</code> variable is defined as the selection of that SVG.</p>
+				</section>
+
+				<section>
+					<pre><code>
+svg.selectAll( "rect" )
+  .data( ratData )
+					</code></pre>
+					<p>Cool, we're selecting all the <code>rect</code> elements in the SVG and binding data to them...</p>
+				</section>
+
+				<section>
+					<h1>Wait, what!?</h1>
+				</section>
+
+				<section>
+					<h1>Those rectangles don't exist!</h1>
+				</section>
+
+				<section>
+					<p>This part is hard to grasp at first, but don't worry if you don't understand. For now, just know that this is how you write the code.</p>
+					<p>If there are no <code>rect</code> elements, we get an empty selection, kind of a placeholder for what's to come. Once we bind data to this selection and append some elements, the selection will contain those elements.</p>
+				</section>
+
+				<section>
+					<p>Ours is an example of the basic syntax for creating new elements to match a data array.</p>
+					<pre><code>
+svg.selectAll( "rect" )
+  .data( ratData )
+  .enter()
+  .append( "rect" )
+					</code></pre>
+					<p><code>enter()</code> refers to new incoming data for which there is no existing <code>rect</code>. We'll come back to that in a moment. For each incoming data value, we're appending a <code>rect</code> element.</p>
+				</section>
+
+				<section>
+					<pre><code>
+.attr( "x", function(d,i){
+  return i*25;
+})
+					</code></pre>
+					<p>This is how we space the bars our horizontally. Functions passed to things like <code>attr()</code> have a second argument, which is the zero-based index of the element in the selection. For our four rectangles, <code>i</code> here will be 0, 1, 2, and 3, giving us x positions of 0, 25, 50, and 75.</p>
+					<p>After this, we set fixed width and color values, and set the heights as we did in the previous example.</p>
+				</section>
+
+				<section>
+					<h2>enter, exit, and update</h2>
+				</section>
+
+				<section>
+					<p>Now that we have rectangles on the page, we could go back and update them the same way we did in the first example. Maybe we want to change the numbers:</p>
+					<pre><code>
+var newData = [ 800, 200, 400, 500 ];
+
+svg.selectAll( "rect" )
+  .data( newData )
+  .attr( "height", function(d){
+    return d/10 * 1.5;
+  })
+  .attr( "y", function(d){
+    return 150 - d/10 * 1.5;
+  });
+					</code></pre>
+					<p>Easy. Four new numbers for four bars.</p>
+				</section>
+
+				<section>
+					<p>But what if we send it five numbers? Or only three?</p>
+					<p>This is where <em>enter</em> and <em>exit</em> selections come in. They deal with new elements and unused elements, respectively, based on incoming data. The <em>update</em> selection is what we just dealt with: basically, existing elements.</p>
+				</section>
+
+				<section>
+					<h2>enter</h2>
+					<p>We have four existing bars. Let's say we send our chart a new data array of five numbers.</p>
+					<pre><code>
+var newData = [ 800, 200, 400, 500, 100 ];
+var selection = svg.selectAll( "rect" )
+                  .data( newData )
+					</code></pre>
+					<p>The <em>enter</em> selection...</p>
+					<pre><code>
+selection.enter()
+					</code></pre>
+					<p>...contains one placeholder for that new fifth number, to which we can append a <code>rect</code>. We've already seen the <em>enter</em> selection in action, of course, back at the beginning.</p>
+				</section>
+
+				<section>
+					<p>So we bind new data and append another rectangle:</p>
+					<pre><code>
+var newData = [ 800, 200, 400, 500, 100 ];
+var selection = svg.selectAll( "rect" )
+                  .data( newData );
+selection.enter()
+  .append( "rect")
+  .attr( "x", function(d,i){
+    return i*25;
+  })
+  .attr( "width", 15 )
+  .attr( "fill", "#d1c9b8" );
+					</code></pre>
+					<p>Then we can update all the bar heights as usual:</p>
+					<pre><code>
+selection
+  .attr( "height", function(d){
+    return d/10 * 1.5;
+  })
+  .attr( "y", function(d){
+    return 150 - d/10 * 1.5;
+  });
+					</code></pre>
+				</section>
+
+				<section>
+					<h2>exit</h2>
+					<p>Now we have five bars. What if we plug only three numbers into the chart? Well...<p>
+						<pre><code>
+var evenNewerData = [ 600, 300, 100 ];
+var selection = svg.selectAll( "rect" )
+                   .data( evenNewerData );
+selection
+  .attr( "height", function(d){
+    return d/10 * 1.5;
+  })
+  .attr( "y", function(d){
+    return 150 - d/10 * 1.5;
+  });
+					</code></pre>
+					<p>Okay, so we updated bar heights for those three numbers. But we still have two extra bars left over!</p>
+				</section>
+
+				<section>
+					<p>The <em>exit</em> selection...</p> 
+					<pre><code>
+selection.exit()
+					</code></pre>
+					<p>...contains those elements that no longer have data after the join. In this case, it's those last two bars, because we didn't provide any numbers for them. And since we don't need them anymore...</p>
+					<pre><code>
+selection.exit()
+  .remove();
+					</code></pre>
+					<p>Poof! They're gone!</p>
+				</section>
+
+				<section>
+					<p>If we put everything together, our chart is pretty flexible and can be updated as needed. Here's how that might look.</p>
+					<pre><code>
+var ratData = [ 400, 900, 300, 600 ];
+
+var svg = d3.select( "body" )
+            .append( "svg" )
+              .attr( "width", 500 )
+              .attr( "height", 150 );
+
+function drawChart( dataArray ){
+    // create a selection and bind data
+    var selection = svg.selectAll( "rect" )
+                       .data( dataArray );
+
+    // create new elements wherever needed                   
+    selection.enter()
+      .append( "rect" )
+      .attr( "x", function(d,i){
+        return i*25;
+      })
+      .attr( "width", 15 )
+      .attr( "fill", "#d1c9b8" );
+
+    // set bar heights based on data
+    selection
+      .attr( "height", function(d){
+        return d/10 * 1.5;
+      })
+      .attr( "y", function(d){
+        return 150 - d/10 * 1.5;
+      });
+    
+    // remove any unused bars
+    selection.exit()
+      .remove();
+}
+
+drawChart( ratData );
+
+// Now try opening up the console and calling drawChart() with different data arrays.
+// The chart will update with the correct number and size of bars.
+// drawChart( [200, 300, 400, 500, 600, 700] )
+// drawChart( [800, 700, 600] )
+// and so on
+					</code></pre>
+				</section>
+
+				<section>
+					<h1>Phew!</h1>
+				</section>
+
+				<section>
+					<p>If you're confused, don't worry! Take your time with some of the good tutorials out there. Once you get the hang of selections and data joins, you are well on your way to D3 mastery.</p>
+					<p>[list of resources]</p>
+				</section>
+
+				<section>
+					<p>So we made a chart. Fine.</p>
+					<h2>But this isn't Charttime</h2>
+				</section>
+
+				<section>
+					<h1>It's Maptime!</h1>
+				</section>
+
+				<section>
+					<h2>Do not be afraid</h2>
+					<p>Maybe "D3 is not a graphical representaion" is making sense by now. We had to get pretty specific in setting visual attributes just to make a stupid bar chart. And a map is way more complicated than that, right?</p>
+				</section>
+
+				<section>
+					<h2>D3 is good at maps</h2>
+					<p>Don't sweat; it's easier than you might think! Drawing a basic map doesn't take any more code than drawing those four bars.</p>
+				</section>
+
+				<section>
+					<iframe data-src="example3/index.html" height="600" width="700" scrolling="no"></iframe>
+				</section>
+
+				<section>
+					<p>All the code that turned GeoJSON data into that map:</p>
+					<pre><code>
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;A D3 map&lt;/title&gt;
+  &lt;script src="http://d3js.org/d3.v3.min.js" charset="utf-8"&gt;&lt;/script&gt;
+  &lt;script src="neighborhoods.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;script&gt;
+var width = 700,
+    height = 580;
+
+var svg = d3.select( "body" )
+  .append( "svg" )
+  .attr( "width", width )
+  .attr( "height", height );
+
+var g = svg.append( "g" );
+
+var projection = d3.geo.albers()
+  .scale( 190000 )
+  .rotate( [71.057,0] )
+  .center( [0, 42.313] )
+  .translate( [width/2,height/2] );
+
+var path = d3.geo.path()
+    .projection( projection );
+
+g.selectAll( "path" )
+  .data( neighborhoods_json.features )
+  .enter()
+  .append( "path" )
+  .attr( "fill", "#ccc" )
+  .attr( "d", path );
+
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+			</code></pre>
+				</section>
+
+				<section>
+					<h2>D3 and GeoJSON</h2>
+					<p>In short, D3 has some internal magic that can turn GeoJSON data into screen coordinates. This is not unlike other libraries such as Leaflet, but the result is much more open-ended, not constrained to shapes on a tiled Mercator map.</p>
+				</section>
+
+				<section>
+					<h2>Time to get mappin'</h2>
+					<p>Let's walk through that Boston map. First, include the neighborhoods GeoJSON data. We've assigned it to a <code>neighborhoods_json</code> variable in <a href="example3/neighborhoods.js" target="_blank">neighborhoods.js</a> which is loaded in the document <code>&lt;head&gt;</code>.</p>
+					<p>The first bit of JS code should look straightforward now:</p>
+					<pre><code>
+var width = 700,
+    height = 580;
+
+var svg = d3.select( "body" )
+  .append( "svg" )
+  .attr( "width", width )
+  .attr( "height", height );
+
+var neighborhoods = svg.append( "g" );
+				</code></pre>
+				</section>
+
+				<section>
+				<pre><code>
+var projection = d3.geo.albers()
+  .scale( 190000 )
+  .rotate( [71.057,0] )
+  .center( [0, 42.313] )
+  .translate( [width/2,height/2] );
+  				</code></pre>
+  				<p>Whoa, does that say <em>projection</em>? If you hear a cartographer get excited about D3, this is why.</p>
+  				<p>D3 supports the <a href="http://www.jasondavies.com/maps/transition/" target="_blank">map projections you've always dreamed of</a>.</p>
+				</section>
+
+				<section>
+				<pre><code>
+var projection = d3.geo.albers()
+  				</code></pre>
+  				<p>Back to the code. Above is what a basic projection looks like. It creates a function into which you can plug longitude and latitude values and get projected coordinates back. For example, having created the <code>projection</code> variable, the following call would return some coordinates:</p>
+  				<pre><code>
+projection( [-71.057,42.313] ); // longitude and latitude of Boston-ish
+  				</code></pre>
+				</section>
+
+				<section>
+					<p>D3 has a handful of <a href="https://github.com/mbostock/d3/wiki/Geo-Projections" target="_blank">projections built in</a>, but there are tons more supported in an <a href="https://github.com/d3/d3-geo-projection/">external plugin</a>.</p>
+				</section>
+
+				<section>
+				<pre><code>
+var projection = d3.geo.albers()
+  .scale( 190000 )
+  .rotate( [71.057,0] )
+  .center( [0, 42.313] )
+  .translate( [width/2,height/2] );
+  				</code></pre>
+  				<p>Back to this.</p>
+  				<ul>
+  					<li><code>scale</code>: honestly, just fiddle with this until it works</li>
+  					<li><code>rotate</code> and <code>center</code>: depending on the projection, you may need to use both of these to center the projection on your area of interest.</li>
+  					<li><code>translate</code>: a pixel offset, commonly specified to ensure that the center of the projection is in the center of the viewing area</li>
+  				</ul>
+				</section>
+
+				<section>
+					<h2>Geo paths</h2>
+					<p>Having said a minute ago that you can plug longitude/latitude pairs into a projection, it's rare that you will actually explicitly do this. Instead, it tends to happen behind the scenes with <a href="https://github.com/mbostock/d3/wiki/Geo-Paths" target="_blank">path generators</a>.</p>
+				</section>
+
+				<section>
+					<pre><code>
+var path = d3.geo.path()
+    .projection( projection );
+    				</code></pre>
+    				<p>Once again we are creating a function here. A path is a function that takes a GeoJSON feature and returns SVG path data, based on the specified projection. Put differently in a kind of pseudo-code, we're doing this:</p>
+    				<pre><code>
+var path = function( feature ){
+  // grab lat/lon coordinates from geojson feature
+  // do some crazy magic to turn them into screen coordinates
+  // return SVG path string
+}
+    				</code></pre>
+    				<p>It helps to remember a path as a function in a moment.</p>
+				</section>
+
+				<section>
+					<pre><code>
+neighborhoods.selectAll( "path" )
+  .data( neighborhoods_json.features )
+  .enter()
+  .append( "path" )
+  .attr( "fill", "#ccc" )
+  .attr( "d", path );
+					</code></pre>
+					<p>Most of this should look familiar by now. Select a bunch of non-existent things, bind data, append new elements, and apply some attributes. Our elements here are SVG paths, which are basically free-form shapes.</p>
+				</section>
+
+				<section>
+					<p>This part can be a little confusing, though:</p>
+					<pre><code>
+.attr( "d", path )
+					</code></pre>
+					<p>First, in SVG Land <code>d</code> is an attribute that defines the coordinates of a path. It's a crazy combination of letters and numbers.</p>
+					<p>Second, this is where it helps to remember that a D3 path is actually a function. The code above is equivalent to a more familiar syntax:</p>
+					<pre><code>
+.attr( "d", function(d){
+  // do magic and return SVG path string
+})
+					</code></pre>
+				</section>
+
+				<section>
+					<h2>Lather, rinse, repeat</h2>
+					<p>Again, if you don't really get it, don't worry! You can copy this <a href="example3/index.html" target="_blank">basic template</a> and re-use it for whatever you're mapping. The only thing you need to do is supply your own GeoJSON and tweak the projection to fit your geography. The more you play around, the more you'll understand.</p>
+				</section>
+
+				<section>
+					<h2>It's time.</h2>
+					<h1 class="fragment">#ratmap</h1>
+				</section>
+
+				<section>
+					<iframe data-src="example4/index.html" height="600" width="700" scrolling="no"></iframe>
+				</section>
+
+				<section>
+					<p>Guess what? Adding a point layer requires almost no extra effort.</p>
+					<pre><code>
+<script src="rodents.js"></script>
+					</code></pre>
+					<pre><code>
+var rodents = svg.append( "g" );
+
+rodents.selectAll( "path" )
+  .data( rodents_json.features )
+  .enter()
+  .append( "path" )
+  .attr( "fill", "#900" )
+  .attr( "stroke", "#999" )
+  .attr( "d", path );
+  					</code></pre>
+				</section>
+
+				<section>
+					<p>All we did is include <a href="examples/rodents.js" target="_blank">new GeoJSON data (rodents)</a> and then mostly repeat what we did for the neighborhood polygons.</p>
+					<p>When a path generator encounters point features, it draws a circle. Optionally you can specify a <a href="https://github.com/mbostock/d3/wiki/Geo-Paths#path_pointRadius" target="_blank"><code>pointRadius</code></a> to control the circle size.</p>
+				</section>
+
+				<section>
+					<h1>Epilogue</h1>
+				</section>
+
+				<section>
+					<p>All we did is make a couple of static graphics, but if you're like me, you're exhausted.</p>
+					<p>Still, there are four additional things worth mentioning.</p>
+				</section>
+
+				<section>
+					<h2>CSS styles</h2>
+					<p>All of the examples herein specified things like color as an attribute on each feature for clarity. But a cleaner way to do it is with CSS. So on the bar chart, for example, instead of</p>
+					<pre><code>
+.attr( "fill", "#d1c9b8" )
+					</code></pre>
+					<p>we could omit that line and include a stylesheet with</p>
+					<pre><code>
+path{ fill: #d1c9b8; }
+					</code></pre>
+				</section>
+
+				<section>
+					<h2>Interactivity</h2>
+					<p>We'll save this for another day, but adding interaction is an obvious next step toward awesome maps.</p>
+					<p><a href="example5/index.html" target="_blank">For example...</a></p>
+				</section>
+
+				<section>
+					<o>Click the rats to get rid of them!</p>
+					<iframe data-src="example5/index.html" height="600" width="700" scrolling="no"></iframe>
+				</section>
+
+				<section>
+					<pre><code>
+rodents.selectAll( "path" )
+  .data( rodents_json.features )
+  .enter()
+  .append( "path" )
+  .attr( "d", path )
+  .on( "click", function(){
+    d3.select(this).remove();
+  });
+  					</code></pre>
+  					<p>D3 uses pretty basic event listeners through the <a href="https://github.com/mbostock/d3/wiki/Selections#on" target="_blank"></code>on()</code> method</a>.</p>
+				</section>
+
+				<section>
+					<h2>Transitions</h2>
+				</section>
+
+				<section>
+					<h2>MOAR LINKZ</h2>
 				</section>
 
 			</div>
