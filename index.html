@@ -73,6 +73,16 @@
 				</section>
 
 				<section>
+					<section>
+						<p>If you see the down arrow in the corner of a slide, press down to see links to helpful resources on the subject at hand.</p>
+						<div style="margin:auto;width:0;height:0;border:12px solid transparent;border-top-color:#8b743d;border-top-width:22px;"></div>
+					</section>
+					<section>
+						<p>Yeah, you get the hang of it!</p>
+					</section>
+				</section>
+
+				<section>
 					<h2>What is D3?</h2>
 					<p>D3 is <a href="http://d3js.org" target="_blank">Data-Driven Documents</a>:</p>
 					<blockquote class="left" cite="http://d3js.org">
@@ -147,7 +157,7 @@
 				</section>
 
 				<section>
-					<p>D3 was created by <a href="http://bost.ocks.org/mike/" target="_blank">Mike Bostock</a> using his amazing brain. It is an <a href="https://github.com/mbostock/d3" target="_blank">open-source</a> library with many additional <a href="https://github.com/mbostock/d3/graphs/contributors" target="_blank">contributors</a>. (As as a mapper, you will esepcially be awed by <a href="http://www.jasondavies.com/" target="_blank">Jason Davies</a> and his contributions.)</p>
+					<p>D3 was created by <a href="http://bost.ocks.org/mike/" target="_blank">Mike Bostock</a> using his giant brain. It is an <a href="https://github.com/mbostock/d3" target="_blank">open-source</a> library with many additional <a href="https://github.com/mbostock/d3/graphs/contributors" target="_blank">contributors</a>. (As a mapper, you will esepcially be awed by <a href="http://www.jasondavies.com/" target="_blank">Jason Davies</a> and his contributions.)</p>
 				</section>
 
 				<section>
@@ -640,14 +650,14 @@ var svg = d3.select( "body" )
 
 var g = svg.append( "g" );
 
-var projection = d3.geo.albers()
+var albersProjection = d3.geo.albers()
   .scale( 190000 )
   .rotate( [71.057,0] )
   .center( [0, 42.313] )
   .translate( [width/2,height/2] );
 
 var path = d3.geo.path()
-    .projection( projection );
+    .projection( albersProjection );
 
 g.selectAll( "path" )
   .data( neighborhoods_json.features )
@@ -686,7 +696,7 @@ var neighborhoods = svg.append( "g" );
 
 				<section>
 				<pre><code>
-var projection = d3.geo.albers()
+var albersProjection = d3.geo.albers()
   .scale( 190000 )
   .rotate( [71.057,0] )
   .center( [0, 42.313] )
@@ -698,11 +708,11 @@ var projection = d3.geo.albers()
 
 				<section>
 				<pre><code>
-var projection = d3.geo.albers()
+var albersProjection = d3.geo.albers()
   				</code></pre>
   				<p>Back to the code. Above is what a basic projection looks like. It creates a function into which you can plug longitude and latitude values and get projected coordinates back. For example, having created the <code>projection</code> variable, the following call would return some coordinates:</p>
   				<pre><code>
-projection( [-71.057,42.313] ); // longitude and latitude of Boston-ish
+albersProjection( [-71.057,42.313] ); // longitude and latitude of Boston-ish
   				</code></pre>
 				</section>
 
@@ -712,7 +722,7 @@ projection( [-71.057,42.313] ); // longitude and latitude of Boston-ish
 
 				<section>
 				<pre><code>
-var projection = d3.geo.albers()
+var albersProjection = d3.geo.albers()
   .scale( 190000 )
   .rotate( [71.057,0] )
   .center( [0, 42.313] )
@@ -734,7 +744,7 @@ var projection = d3.geo.albers()
 				<section>
 					<pre><code>
 var path = d3.geo.path()
-    .projection( projection );
+    .projection( albersProjection );
     				</code></pre>
     				<p>Once again we are creating a function here. A path is a function that takes a GeoJSON feature and returns SVG path data, based on the specified projection. Put differently in a kind of pseudo-code, we're doing this:</p>
     				<pre><code>

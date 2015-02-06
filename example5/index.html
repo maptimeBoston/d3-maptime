@@ -29,14 +29,14 @@ var svg = d3.select( "body" )
 
 var neighborhoods = svg.append( "g" ).attr( "id", "neighborhoods" );
 
-var projection = d3.geo.albers()
+var albersProjection = d3.geo.albers()
   .scale( 190000 )
   .rotate( [71.057,0] )
   .center( [0, 42.313] )
   .translate( [width/2,height/2] );
 
 var path = d3.geo.path()
-    .projection( projection );
+    .projection( albersProjection );
 
 neighborhoods.selectAll( "path" )
   .data( neighborhoods_json.features )
