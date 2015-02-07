@@ -173,7 +173,7 @@
 				</section>
 
 				<section>
-					<p>[insert some crazy example here]</p>
+					<iframe data-src="ratmap/index.html" height="600" width="800" scrolling="no"></iframe>
 				</section>
 
 				<section>
@@ -398,12 +398,12 @@ $( "body" ).append( "&lt;svg&gt;" )
 				<section>
 					<p>2. D3's <code>append()</code> returns the appended element, not the parent. Thus the attributes we set in the next lines will apply to the SVG, not the body (as they would with jQuery).</p>
 							<pre><code>
-var svg = d3.select( "body" )
-            .append( "svg" ) // below here applies to the svg
-              .attr( "width", 100 )
-              .attr( "height", 150 );
+var svg = d3.select( "body" ) // returns body selection
+            .append( "svg" ) // returns svg selection
+              .attr( "width", 100 ) // returns svg selection
+              .attr( "height", 150 ); // returns svg selection
 					</code></pre>
-					<p>And because in the end those methods are returning the SVG, our <code>svg</code> variable is defined as the selection of that SVG.</p>
+					<p>And because the last method in the chain returns the SVG selection, that's what our <code>svg</code> variable is defined as.</p>
 				</section>
 
 				<section>
@@ -428,14 +428,14 @@ svg.selectAll( "rect" )
 				</section>
 
 				<section>
-					<p>Ours is an example of the basic syntax for creating new elements to match a data array.</p>
+					<p>This is the basic syntax for creating new elements to match a data array.</p>
 					<pre><code>
 svg.selectAll( "rect" )
   .data( ratData )
   .enter()
   .append( "rect" )
 					</code></pre>
-					<p><code>enter()</code> refers to new incoming data for which there is no existing <code>rect</code>. We'll come back to that in a moment. For each incoming data value, we're appending a <code>rect</code> element.</p>
+					<p><code>enter()</code> refers to new incoming data for which there is not yet an existing <code>rect</code>. (We'll come back to that later.) For each incoming data value, we're appending a <code>rect</code> element.</p>
 				</section>
 
 				<section>
@@ -491,28 +491,29 @@ selection.enter()
 
 				<section>
 					<p>So we bind new data and append another rectangle:</p>
-					<pre><code>
-var newData = [ 800, 200, 400, 500, 100 ];
+					
+<pre><code>var newData = [ 800, 200, 400, 500, 100 ];
 var selection = svg.selectAll( "rect" )
                   .data( newData );
+// this part will only happen for the new fifth bar                  
 selection.enter()
   .append( "rect")
   .attr( "x", function(d,i){
     return i*25;
   })
   .attr( "width", 15 )
-  .attr( "fill", "#d1c9b8" );
-					</code></pre>
+  .attr( "fill", "#d1c9b8" );</code></pre>
 					<p>Then we can update all the bar heights as usual:</p>
-					<pre><code>
+					
+<pre><code>// this part will happen to all five bars
 selection
   .attr( "height", function(d){
     return d/10 * 1.5;
   })
   .attr( "y", function(d){
     return 150 - d/10 * 1.5;
-  });
-					</code></pre>
+  });</code></pre>
+					
 				</section>
 
 				<section>
