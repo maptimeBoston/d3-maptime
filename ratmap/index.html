@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<head>
+  <title>#ratmap!!</title>
+  <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+  <script src="http://d3js.org/topojson.v1.min.js"></script>
+  <style>
+    html, body{
+      margin: 0;
+    }
+    #map path{ stroke: #ccc; fill:#eee; stroke-width: .5; }
+    #map defs path{ stroke: none; }
+    #map path.highlight{ stroke: black; stroke-width: 1;}
+    #map path.ocean{ fill: #bbd4e3; stroke:none;}
+    #map #graticule path{ stroke: #a6c0d0; fill: none; stroke-width: 1;}
+    #map #chapters path{ fill: red; }
+    #map path#title-path{ fill: none; stroke:none; }
+    #title-text{
+      font: 30px Helvetica, Arial, sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <script src="map.js"></script>
+</body>
+</html>
