@@ -28,6 +28,14 @@ d3.json( "countries.json", function( json )
 	})	
 });
 
+var colorScale = d3.scale.linear()
+    .domain([-180, -120, -60, 0, 60, 120, 180])
+    .range(['#1b9e77', '#d95f02', '#7570b3', '#e7298a', '#66a61e', '#e6ab02', '#1b9e77']);
+
+var pastelScale = d3.scale.linear()
+    .domain([-180, -120, -60, 0, 60, 120, 180])
+    .range(['#fbb4ae', '#b3cde3', '#ccebc5', '#decbe4', '#fed9a6', '#ffffcc', '#fbb4ae']);
+
 function build_map()
 {	
 	mapProjection = d3.geo.orthographic()
@@ -118,13 +126,16 @@ function build_map()
 		.enter()
 		.append( "svg:path" )
 		.attr("vector-effect","non-scaling-stroke")
+		.attr("fill", function(){
+			return pastelScale( Math.random() * 360 - 180 );
+		})
 		.attr( "d", path );
 
 	chapters.selectAll( "image" )
 		.data( chapterFeatures )
 		.enter()
 		.append( "svg:image" )
-		.attr("xlink:href","rat.png")
+		.attr("xlink:href","rainbowrat.png")
 		.attr( "x", function(d){
 			return mapProjection( d.geometry.coordinates )[0] - 30;
 		})
@@ -166,10 +177,6 @@ function build_map()
 	return countries;
 }
 
-var colorScale = d3.scale.linear()
-    .domain([-180, -120, -60, 0, 60, 120, 180])
-    .range(['#1b9e77', '#d95f02', '#7570b3', '#e7298a', '#66a61e', '#e6ab02', '#1b9e77']);
-
 function pauseRotation(){
 	clearInterval(rotation);
 }
@@ -181,6 +188,8 @@ function startRotation(){
 		move_globe( [rotateX,rotateX*2] );
 		map.select( "#title-path" ).attr( "transform", "rotate(" + rotateX + ",500,333.33333)" );
 		map.select( "#title-text" ).attr( "fill", colorScale(rotateX) );
+		countries.selectAll("path")
+			.attr( "fill", pastelScale(rotateX) );
 	},50);
 }
 
@@ -207,7 +216,7 @@ function move_globe( coords, animate, end )
 						})
 						.attr( "y", function(d){
 							return mapProjection( d.geometry.coordinates )[1] - 25;
-						});
+						})
 				};
 			})
 			.each( "end", end || function(){} ); // Function to run at the end of the animation
