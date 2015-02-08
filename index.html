@@ -154,7 +154,7 @@
 				</section>
 
 				<section>
-					<p>D3 was created by <a href="http://bost.ocks.org/mike/" target="_blank">Mike Bostock</a> using his giant brain. It is an <a href="https://github.com/mbostock/d3" target="_blank">open-source</a> library with many additional <a href="https://github.com/mbostock/d3/graphs/contributors" target="_blank">contributors</a>. (As a mapper, you will esepcially be awed by <a href="http://www.jasondavies.com/" target="_blank">Jason Davies</a> and his contributions.)</p>
+					<p>D3 was created by <a href="http://bost.ocks.org/mike/" target="_blank">Mike Bostock</a> using his giant brain. It is an <a href="https://github.com/mbostock/d3" target="_blank">open-source</a> library with many additional <a href="https://github.com/mbostock/d3/graphs/contributors" target="_blank">contributors</a>. (As a mapper, you will especially be awed by <a href="http://www.jasondavies.com/" target="_blank">Jason Davies</a> and his contributions.)</p>
 				</section>
 
 				<section>
@@ -824,7 +824,7 @@ rodents.selectAll( "path" )
 
 				<section>
 					<p>All we did is make a couple of static graphics, but if you're like me, you're exhausted.</p>
-					<p>Still, there are four additional things worth mentioning.</p>
+					<p>Still, there are a few additional things worth mentioning.</p>
 				</section>
 
 				<section>
@@ -866,10 +866,42 @@ rodents.selectAll( "path" )
 
 				<section>
 					<h2>Transitions</h2>
+					<p>D3 makes transitions (i.e., animation) easy, which is useful for anything from design flair to time-series graphics.</p>
+				</section>
+
+				<section>
+					<o>Click the rats to get rid of them!</p>
+					<iframe data-src="example6/index.html" height="600" width="700" scrolling="no"></iframe>
+				</section>
+
+				<section>
+					<pre><code>
+d3.select(this)
+  .attr("opacity",1)
+  .transition()
+  .duration( 1000 )
+  .attr( "x", width * Math.round( Math.random() ) )
+  .attr( "y", height * Math.round( Math.random() ) )
+  .attr( "opacity", 0 )
+  .each("end",function(){
+    d3.select(this).remove();
+  })
+  					</code></pre>
+  					<p>In short, stick a <code>transition()</code> in there, and anything after that will be animated rather than taking effect immediately. <a href="https://github.com/mbostock/d3/wiki/Transitions" target="_blank">Read more about it.</a>
+				</section>
+
+				<section>
+					<h2>Loading external data</h2>
+					<p>Although our examples used pre-loaded data, D3 has methods for loading data asynchronously. Check out <a href="https://github.com/mbostock/d3/wiki/Requests#d3_json" target="_blank">d3.json()</a> and <a href="https://github.com/mbostock/d3/wiki/CSV" target="_blank">d3.csv()</a> in particular.
 				</section>
 
 				<section>
 					<h2>MOAR LINKZ</h2>
+				</section>
+
+				<section>
+					<h2>Get mappin'!</h2>
+					<iframe data-src="ratmap/index.html" height="600" width="800" scrolling="no"></iframe>
 				</section>
 
 			</div>
