@@ -63,8 +63,11 @@
 					</section>
 					<section>
 						<ul>
-							<li>Link 1</li>
-							<li>Link 2</li>
+							<li><a href="https://github.com/mbostock/d3/wiki" target="_blank">D3 documentation.</a> Start here!</li>
+							<li>Be sure to note the <a href="https://github.com/mbostock/d3/wiki/Tutorials" target="_blank">tutorials page there</a>.</li>
+							<li><a href="http://alignedleft.com/tutorials/d3" target="_blank">Scott Murray's D3 tutorials</a> are especially recommended.</li>
+							<li>Browse <a href="http://bl.ocks.org/mbostock" target="_blank">Mike Bostock's examples</a>. He is someone who understands the <a href="http://bost.ocks.org/mike/example/" target="_blank">power of examples</a>.</li>
+							<li>For examples of specific pieces of D3, try <a href="http://bl.ocksplorer.org/" target="_blank">bl.ocksplorer.org</a>, by Irene Ros.</li>
 						</ul>
 					</section>
 				</section>
@@ -264,14 +267,19 @@ d3.selectAll( "rect" )
 				</section>
 
 				<section>
-					<pre><code>d3.selectAll( "rect" )</code></pre>
-					<p>D3 has <code>select()</code> and <code>selectAll()</code> methods to find single or multiple DOM elements, respectively. This works much like jQuery.</p>
-					<pre><code>
-d3.selectAll( "rect" ); // select all SVG rect elements
-d3.select( "#boston" ); // select an element where id='boston'
-d3.selectAll( ".bar" ); // select all elements with the class 'bar'
-					</code></pre>
-					<p>Since <code>selectAll("rect")</code> finds multiple elements, everything in the chain following this will be happening to each of those elements.</p>
+					<section>
+						<pre><code>d3.selectAll( "rect" )</code></pre>
+						<p>D3 has <code>select()</code> and <code>selectAll()</code> methods to find single or multiple <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model" target="_blank">DOM</a> elements, respectively. This works much like <a href="jquery.com" target="_blank">jQuery</a>.</p>
+						<pre><code>
+	d3.selectAll( "rect" ); // select all SVG rect elements
+	d3.select( "#boston" ); // select an element where id='boston'
+	d3.selectAll( ".bar" ); // select all elements with the class 'bar'
+						</code></pre>
+						<p>Since <code>selectAll("rect")</code> finds multiple elements, everything in the chain following this will be happening to each of those elements.</p>
+					</section>
+					<section>
+						<p>"DOM elements" basically means HTML or SVG entities, like a <code>&lt;div&gt;</code> or <code>&lt;p&gt;</code> or <code>&lt;circle&gt;</code> element. Elements have properties and styles that we'll be controlling via D3 code.</p>
+					</section>
 				</section>
 
 				<section>
@@ -423,8 +431,13 @@ svg.selectAll( "rect" )
 				</section>
 
 				<section>
-					<p>This part is hard to grasp at first, but don't worry if you don't understand. For now, just know that this is how you write the code.</p>
-					<p>If there are no <code>rect</code> elements, we get an empty selection, kind of a placeholder for what's to come. Once we bind data to this selection and append some elements, the selection will contain those elements.</p>
+					<section>
+						<p>This part is hard to grasp at first, but don't worry if you don't understand. For now, just know that this is how you write the code.</p>
+						<p>If there are no <code>rect</code> elements, we get an empty selection, kind of a placeholder for what's to come. Once we bind data to this selection and append some elements, the selection will contain those elements.</p>
+					</section>
+					<section>
+						<p>For what exactly is going on under the hood with empty selections and the following data binding, take a look at this short <a href="https://northlandia.wordpress.com/2014/11/01/d3-selection-mysteries-solved/" target="_blank">step-by-step overview</a> by Carl Sack.</p>
+					</section>
 				</section>
 
 				<section>
@@ -896,7 +909,10 @@ d3.select(this)
 				</section>
 
 				<section>
-					<h2>MOAR LINKZ</h2>
+					<h2>Also</h2>
+					<ul>
+						<li>MaptimeSEA's <a href="http://maptimesea.github.io/2015/01/07/d3-mapping.html" target="_blank">D3 tutorial</a></li>
+					</uL>
 				</section>
 
 				<section>
