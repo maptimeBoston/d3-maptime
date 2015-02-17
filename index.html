@@ -290,13 +290,13 @@ d3.selectAll( "rect" )
 				<section>
 					<pre><code>.data( ratData )</code></pre>
 					<p>The <code>data()</code> method is the very soul of D3. With it, an array of data is bound to page elements.</p>
-					<p>In your web inspector, see that the data has been directly attached to the <code>rect</code> elements as a <code>__data__</code> property.</p>
+					<p>In your web inspector, see that the data has been directly attached to the <code>&lt;rect&gt;</code> elements as a <code>__data__</code> property.</p>
 					<img src="images/element_data.jpg"/>
 				</section>
 
 				<section>
 					<section>
-						<p>In the simplest case, array data is joined to elements in order. So our first <code>rect</code> gets a value of 400, the second 900, and so on. But there are powerful, more sophisticated ways of joining data to elements and specifying which elements get which data values.</p>
+						<p>In the simplest case, array data is joined to elements in order. So our first <code>&lt;rect&gt;</code> gets a value of 400, the second 900, and so on. But there are powerful, more sophisticated ways of joining data to elements and specifying which elements get which data values.</p>
 					</section>
 					<section>
 						<p>See Mike Bostock's <a href="http://bost.ocks.org/mike/constancy/" target="_blank">Object Constancy</a> example and explanation of how key functions can be used in data joins.</p>
@@ -429,7 +429,7 @@ var svg = d3.select( "body" ) // returns body selection
 svg.selectAll( "rect" )
   .data( ratData )
 					</code></pre>
-					<p>Cool, we're selecting all the <code>rect</code> elements in the SVG and binding data to them...</p>
+					<p>Cool, we're selecting all the <code>&lt;rect&gt;</code> elements in the SVG and binding data to them...</p>
 				</section>
 
 				<section>
@@ -443,7 +443,7 @@ svg.selectAll( "rect" )
 				<section>
 					<section>
 						<p>This part is hard to grasp at first, but don't worry if you don't understand. For now, just know that this is how you write the code.</p>
-						<p>If there are no <code>rect</code> elements, we get an empty selection, kind of a placeholder for what's to come. Once we bind data to this selection and append some elements, the selection will contain those elements.</p>
+						<p>If there are no <code>&lt;rect&gt;</code> elements, we get an empty selection, kind of a placeholder for what's to come. Once we bind data to this selection and append some elements, the selection will contain those elements.</p>
 					</section>
 					<section>
 						<p>For what exactly is going on under the hood with empty selections and the following data binding, take a look at this short <a href="https://northlandia.wordpress.com/2014/11/01/d3-selection-mysteries-solved/" target="_blank">step-by-step overview</a> by Carl Sack.</p>
@@ -458,7 +458,7 @@ svg.selectAll( "rect" )
   .enter()
   .append( "rect" )
 					</code></pre>
-					<p><code>enter()</code> refers to new incoming data for which there is not yet an existing <code>rect</code>. (We'll come back to that later.) For each incoming data value, we're appending a <code>rect</code> element.</p>
+					<p><code>enter()</code> refers to new incoming data for which there is not yet an existing <code>&lt;rect&gt;</code>. (We'll come back to that later.) For each incoming data value, we're appending a <code>&lt;rect&gt;</code> element.</p>
 				</section>
 
 				<section>
@@ -514,7 +514,7 @@ var selection = svg.selectAll( "rect" )
 					<pre><code>
 selection.enter()
 					</code></pre>
-					<p>...contains one placeholder for that new fifth number, to which we can append a <code>rect</code>. We've already seen the <em>enter</em> selection in action, of course, back at the beginning.</p>
+					<p>...contains one placeholder for that new fifth number, to which we can append a <code>&lt;rect&gt;</code>. We've already seen the <em>enter</em> selection in action, of course, back at the beginning.</p>
 				</section>
 
 				<section>
