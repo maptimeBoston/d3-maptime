@@ -161,9 +161,14 @@
 				</section>
 
 				<section>
-					<h2>D3 is not a graphical representation</h2>
-					<p>D3 is not a magic tool that draws and styles charts, maps, etc. Rather, it provides a means for <strong>YOU</strong> to create and style web-standard documents based on your data.</p>
-					<p>It's not about charts, nor maps, nor any particular kind of graphic. It's more about the data. You can use it for almost anything.</p>
+					<section>
+						<h2>D3 is not a graphical representation</h2>
+						<p>D3 is not a magic tool that draws and styles charts, maps, etc. Rather, it provides a means for <strong>YOU</strong> to create and style web-standard documents based on your data.</p>
+						<p>It's not about charts, nor maps, nor any particular kind of graphic. It is fundamentally about data and web documents.</p>
+					</section>
+					<section>
+						<p>(That said, there are a handful of cases in which D3 does kind of magically draw something for you based on some parameters. A basic example is an <a href="https://github.com/mbostock/d3/wiki/SVG-Axes" target="_blank">axis</a>.)
+					</section>
 				</section>
 
 				<section>
@@ -290,7 +295,12 @@ d3.selectAll( "rect" )
 				</section>
 
 				<section>
-					<p>In the simplest case, array data is joined to elements in order. So our first <code>rect</code> gets a value of 400, the second 900, and so on. But there are powerful, more sophisticated ways of joining data to elements and specifying which elements get which data values.</p>
+					<section>
+						<p>In the simplest case, array data is joined to elements in order. So our first <code>rect</code> gets a value of 400, the second 900, and so on. But there are powerful, more sophisticated ways of joining data to elements and specifying which elements get which data values.</p>
+					</section>
+					<section>
+						<p>See Mike Bostock's <a href="http://bost.ocks.org/mike/constancy/" target="_blank">Object Constancy</a> example and explanation of how key functions can be used in data joins.</p>
+					</section>
 				</section>
 
 				<section>
@@ -483,8 +493,13 @@ svg.selectAll( "rect" )
 				</section>
 
 				<section>
-					<p>But what if we send it five numbers? Or only three?</p>
-					<p>This is where <em>enter</em> and <em>exit</em> selections come in. They deal with new elements and unused elements, respectively, based on incoming data. The <em>update</em> selection is what we just dealt with: basically, existing elements.</p>
+					<section>
+						<p>But what if we send it five numbers? Or only three?</p>
+						<p>This is where <em>enter</em> and <em>exit</em> selections come in. They deal with new elements and unused elements, respectively, based on incoming data. The <em>update</em> selection is what we just dealt with: basically, existing elements.</p>
+					</section>
+					<section>
+						Mike Bostock has a nice example of what we're about to do, showing how the three types of selections can work together: <a href="http://bost.ocks.org/mike/circles/" target="_blank">Three Little Circles</a>. Also see his <a href="http://bost.ocks.org/mike/selection/" target="_blank">longer explanation of selections</a> as you progress toward understanding everything.</p> 
+					</section>
 				</section>
 
 				<section>
@@ -614,7 +629,7 @@ drawChart( ratData );
 
 				<section>
 					<p>If you're confused, don't worry! Take your time with some of the good tutorials out there. Once you get the hang of selections and data joins, you are well on your way to D3 mastery.</p>
-					<p>[list of resources]</p>
+					<p>Check out things like Mike Bostock's <a href="http://bost.ocks.org/mike/bar/" target="_blank">Let's Make a Bar Chart</a> tutorial and his <a href="http://bost.ocks.org/mike/selection/" target="_blank">explanation of selections</a> to help you get there.</p>
 				</section>
 
 				<section>
