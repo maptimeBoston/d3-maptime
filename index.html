@@ -319,11 +319,35 @@ el.style( "opacity" ); // returns .5
 				<section>
 					<p>...or they can set values based on the element's <strong>data</strong> by passing a function, which is what we did.</p>
 					<pre><code>
-.attr( "height", function(d){
-  return d/10 * 1.5;
+.attr( "height", function(d){ // d = the element's data
+  return d/10 * 1.5; // return value will assigned to the height attribute
 })
 					</code></pre>
-					<p>For each element, the function will be invoked with <code>d</code> being its data value (in our case, a number like 400). Whatever the function returns is what the "height" attribute will be set to. If you do the math, our rectangles end up with heights of 60, 135, 45, and 90.</p>
+					<p>For each element, the function will be invoked with <code>d</code> being its data value (in our case, a number like 400). Whatever the function returns is what the "height" attribute will be set to.</p>
+				</section>
+
+				<section>
+					<pre><code>
+.attr( attribute_name, function(d,i){
+  return some_value;
+})
+					</code></pre>
+					<p>This is a more generalized form of setting attributes based on data. <code>d</code> represents the data bound to the element. <code>i</code> represents the element's zero-based index in the selection. (We'll see that in action later on.)</p>
+				</section>
+
+				<section>
+					<p>So in an expanded example of our first bar...</p>
+					<pre><code>.attr( "height", function(d,i){
+  // d = 400
+  // i = 0
+  return d/10 * 1.5; // 400/10 * 1.5 = 60
+})</code></pre>
+					<p>and the second bar...</p>
+					<pre><code>.attr( "height", function(d,i){
+  // d = 900
+  // i = 1
+  return d/10 * 1.5; // 900/10 * 1.5 = 135
+})</code></pre>
 				</section>
 
 				<section>
@@ -467,7 +491,7 @@ svg.selectAll( "rect" )
   return i*25;
 })
 					</code></pre>
-					<p>This is how we space the bars our horizontally. Functions passed to things like <code>attr()</code> have a second argument, which is the zero-based index of the element in the selection. For our four rectangles, <code>i</code> here will be 0, 1, 2, and 3, giving us x positions of 0, 25, 50, and 75.</p>
+					<p>This is how we space the bars our horizontally using that second <code>i</code> argument, the index of each bar in the selection. For our four rectangles, <code>i</code> here will be 0, 1, 2, and 3, giving us x positions of 0, 25, 50, and 75.</p>
 					<p>After this, we set fixed width and color values, and set the heights as we did in the previous example.</p>
 				</section>
 
