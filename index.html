@@ -289,6 +289,23 @@ d3.selectAll( "rect" )
 				</section>
 
 				<section>
+					<p><code>d3.select( "rect" )</code></p>
+					<pre><code>
+<rect x="0" width="15" fill="#d1c9b8"></rect> <!-- I am selected! -->
+<rect x="25" width="15" fill="#d1c9b8"></rect>
+<rect x="50" width="15" fill="#d1c9b8"></rect>
+<rect x="75" width="15" fill="#d1c9b8"></rect>
+					</code></pre>
+					<p><code>d3.selectAll( "rect" )</code></p>
+					<pre><code>
+<rect x="0" width="15" fill="#d1c9b8"></rect> <!-- I am selected! -->
+<rect x="25" width="15" fill="#d1c9b8"></rect><!-- I am selected! -->
+<rect x="50" width="15" fill="#d1c9b8"></rect><!-- I am selected! -->
+<rect x="75" width="15" fill="#d1c9b8"></rect><!-- I am selected! -->
+					</code></pre>
+				</section>
+
+				<section>
 					<pre><code>.data( ratData )</code></pre>
 					<p>The <code>data()</code> method is the very soul of D3. With it, an array of data is bound to page elements.</p>
 					<p>In your web inspector, see that the data has been directly attached to the <code>&lt;rect&gt;</code> elements as a <code>__data__</code> property.</p>
