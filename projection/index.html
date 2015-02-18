@@ -1,0 +1,61 @@
+<html>
+<head>
+	<script src="http://d3js.org/d3.v3.min.js"></script>
+	<script src="http://d3js.org/d3.geo.projection.v0.min.js"></script>
+	<style>
+		path{ stroke: #999; fill: #eee;}
+		#boundary path{ fill: #f2f9ff; stroke: none;}		
+	</style>
+</head>
+<body>
+	<script>
+
+var width = 1000,
+	height = 600;
+
+var svg = d3.select( "body" )
+	.append( "svg" )
+	.attr( "width", width )
+	.attr( "height", height );
+
+var boundary = svg.append("g")
+		.attr( "id", "boundary" );
+
+var countries = svg.append( "g" )
+	.attr( "id", "countries" );
+
+var projection = d3.geo.robinson()
+    .scale(150)
+    .center([0,27])
+    .rotate([-100,0] )
+    .translate([width / 2, height / 2]);
+
+var path = d3.geo.path()
+	.projection( projection );
+
+var boundaryFeature = {type:"Feature",geometry:{
+	type: "Polygon",
+	coordinates: [[
+		[-180,89.99],
+		[180,89.99],
+		[180,-89.99],
+		[-180,-89.99],
+		[-180,89.99]
+	]]
+}}
+
+d3.json( "countries.json", function(json){
+	boundary
+		.append( "path" )
+		.datum( boundaryFeature )
+		.attr( "d", path );
+
+	countries.selectAll( "path" )
+		.data( json.features )
+		.enter()
+		.append( "path" )
+		.attr( "d", path );
+});
+	</script>
+</body>
+</html>

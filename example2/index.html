@@ -1,0 +1,54 @@
+<html>
+<head>
+  <title>A D3 chart</title>
+  <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+</head>
+<body>
+  <script>
+var ratData = [ 400, 900, 300, 600 ];
+
+var svg = d3.select( "body" )
+            .append( "svg" )
+              .attr( "width", 500 )
+              .attr( "height", 150 );
+
+function drawChart( dataArray ){
+    // create a selection
+  var selection = svg.selectAll( "rect" )
+                       .data( dataArray );
+
+    // create new elements wherever needed                   
+    selection.enter()
+      .append( "rect" )
+      .attr( "x", function(d,i){
+        return i*25;
+      })
+      .attr( "width", 15 )
+      .attr( "fill", "#d1c9b8" );
+
+    // set bar heights based on data
+    selection
+      .attr( "height", function(d){
+        return d/10 * 1.5;
+      })
+      .attr( "y", function(d){
+        return 150 - d/10 * 1.5;
+      });
+    
+    // remove any unused bars
+    selection.exit()
+      .remove();
+}
+
+drawChart( ratData );
+
+// Now try opening up the console and calling drawChart() with different data arrays.
+// The chart will update with the correct number and size of bars.
+// drawChart( [ 200, 300, 400, 500, 600, 700 ] )
+// drawChart( [ 800, 700, 600 ] )
+// and so on
+
+  </script>
+
+</body>
+</html>

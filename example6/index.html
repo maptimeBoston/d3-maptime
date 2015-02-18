@@ -1,0 +1,77 @@
+<html>
+<head>
+  <title>A D3 map</title>
+  <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+  <script src="neighborhoods.js"></script>
+  <script src="rodents.js"></script>
+  <style>
+    #neighborhoods path{
+      fill: #ccc;
+    }
+    #rodents path{
+      fill: #900;
+      stroke: #999;
+    }
+    #rodents path:hover{
+      fill: black;
+    }
+  </style>
+</head>
+<body>
+  <script>
+var width = 700,
+    height = 580;
+
+var svg = d3.select( "body" )
+  .append( "svg" )
+  .attr( "width", width )
+  .attr( "height", height );
+
+var neighborhoods = svg.append( "g" ).attr( "id", "neighborhoods" );
+
+var albersProjection = d3.geo.albers()
+  .scale( 190000 )
+  .rotate( [71.057,0] )
+  .center( [0, 42.313] )
+  .translate( [width/2,height/2] );
+
+var path = d3.geo.path()
+    .projection( albersProjection );
+
+neighborhoods.selectAll( "path" )
+  .data( neighborhoods_json.features )
+  .enter()
+  .append( "path" )
+  .attr( "d", path );
+
+var rodents = svg.append( "g" ).attr( "id", "rodents" );
+
+rodents.selectAll( "image" )
+  .data( rodents_json.features )
+  .enter()
+  .append( "svg:image" )
+  .attr("xlink:href","rat.png")
+  .attr( "x", function(d){
+    return albersProjection( d.geometry.coordinates )[0] - 30;
+  })
+  .attr( "y", function(d){
+    return albersProjection( d.geometry.coordinates )[1] - 25;
+  })
+  .attr("width",60)
+  .attr("height",50)
+  .on( "click", function(){
+    d3.select(this)
+      .attr("opacity",1)
+      .transition()
+      .duration( 1000 )
+      .attr( "x", width * Math.round( Math.random() ) )
+      .attr( "y", height * Math.round( Math.random() ) )
+      .attr( "opacity", 0 )
+      .each("end",function(){
+        d3.select(this).remove();
+      })
+  });
+
+  </script>
+</body>
+</html>

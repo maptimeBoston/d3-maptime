@@ -1,0 +1,9 @@
+html, body{
+	margin: 0;
+}
+
+#map path{ stroke: #fff; fill:#ccc; stroke-width: .5; }
+#map defs path{ stroke: none; }
+#map path.highlight{ stroke: black; stroke-width: 1;}
+#map path.ocean{ fill: #bbd4e3; stroke:none;}
+#map #graticule path{ stroke: #a6c0d0; fill: none; stroke-width: 1;}
