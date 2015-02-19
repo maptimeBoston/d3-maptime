@@ -724,7 +724,7 @@ var albersProjection = d3.geo.albers()
   .center( [0, 42.313] )
   .translate( [width/2,height/2] );
 
-var path = d3.geo.path()
+var geoPath = d3.geo.path()
     .projection( albersProjection );
 
 g.selectAll( "path" )
@@ -732,7 +732,7 @@ g.selectAll( "path" )
   .enter()
   .append( "path" )
   .attr( "fill", "#ccc" )
-  .attr( "d", path );
+  .attr( "d", gepPath );
 
   &lt;/script&gt;
 &lt;/body&gt;
@@ -811,12 +811,12 @@ var albersProjection = d3.geo.albers()
 
 				<section>
 					<pre><code>
-var path = d3.geo.path()
+var geoPath = d3.geo.path()
     .projection( albersProjection );
     				</code></pre>
     				<p>Once again we are creating a function here. A path is a function that takes a GeoJSON feature and returns SVG path data, based on the specified projection. Put differently in a kind of pseudo-code, we're doing this:</p>
     				<pre><code>
-var path = function( feature ){
+var geoPath = function( feature ){
   // grab lat/lon coordinates from geojson feature
   // do some crazy magic to turn them into screen coordinates
   // return SVG path string
@@ -832,7 +832,7 @@ neighborhoods.selectAll( "path" )
   .enter()
   .append( "path" )
   .attr( "fill", "#ccc" )
-  .attr( "d", path );
+  .attr( "d", geoPath );
 					</code></pre>
 					<p>Most of this should look familiar by now. Select a bunch of non-existent things, bind data, append new elements, and apply some attributes. Our elements here are SVG paths, which are basically free-form shapes.</p>
 				</section>
@@ -840,7 +840,7 @@ neighborhoods.selectAll( "path" )
 				<section>
 					<p>This part can be a little confusing, though:</p>
 					<pre><code>
-.attr( "d", path )
+.attr( "d", geoPath )
 					</code></pre>
 					<p>First, in SVG Land <code>d</code> is an attribute that defines the coordinates of a path. It's a crazy combination of letters and numbers.</p>
 					<p>Second, this is where it helps to remember that a D3 path is actually a function. The code above is equivalent to a more familiar syntax:</p>
@@ -879,7 +879,7 @@ rodents.selectAll( "path" )
   .append( "path" )
   .attr( "fill", "#900" )
   .attr( "stroke", "#999" )
-  .attr( "d", path );
+  .attr( "d", geoPath );
   					</code></pre>
 				</section>
 
@@ -926,7 +926,7 @@ rodents.selectAll( "path" )
   .data( rodents_json.features )
   .enter()
   .append( "path" )
-  .attr( "d", path )
+  .attr( "d", geoPath )
   .on( "click", function(){
     d3.select(this).remove();
   });

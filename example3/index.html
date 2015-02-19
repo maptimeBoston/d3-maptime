@@ -22,7 +22,7 @@ var albersProjection = d3.geo.albers()
   .center( [0, 42.313] )
   .translate( [width/2,height/2] );
 
-var path = d3.geo.path()
+var geoPath = d3.geo.path()
     .projection( albersProjection );
 
 g.selectAll( "path" )
@@ -30,7 +30,7 @@ g.selectAll( "path" )
   .enter()
   .append( "path" )
   .attr( "fill", "#ccc" )
-  .attr( "d", path );
+  .attr( "d", geoPath );
 
   </script>
 </body>

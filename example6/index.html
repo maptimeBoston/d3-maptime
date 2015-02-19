@@ -35,14 +35,14 @@ var albersProjection = d3.geo.albers()
   .center( [0, 42.313] )
   .translate( [width/2,height/2] );
 
-var path = d3.geo.path()
+var geoPath = d3.geo.path()
     .projection( albersProjection );
 
 neighborhoods.selectAll( "path" )
   .data( neighborhoods_json.features )
   .enter()
   .append( "path" )
-  .attr( "d", path );
+  .attr( "d", geoPath );
 
 var rodents = svg.append( "g" ).attr( "id", "rodents" );
 
