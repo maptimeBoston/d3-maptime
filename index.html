@@ -580,23 +580,30 @@ selection.enter()
  				</section>
 
  				<section>
-					<p>To get everything back together and do work on all elements, we need to merge the enter and update selections:</p>
+					<p>To get everything back together and do work on all elements, we need to <a href="https://github.com/d3/d3-selection/blob/master/README.md#selection_merge" target="_blank">merge</a> the enter and update selections:</p>
 					
-<pre><code>// this part will happen to all five bars
-selection.enter()
+<pre><code>
+
+var selection = svg.selectAll('rect')  // the UPDATE selection
+                  .data(newData);
+
+selection.enter()  // the ENTER selection
   .append('rect')
   .attr('x', function(d, i){
     return i * 25;
   })
   .attr('width', 15)
   .attr('fill', '#d1c9b8')
-  .merge(selection)  // merge the enter selection (above) into the main update selection
+  .merge(selection)  // ENTER + UPDATE selections
+  // everything below now happens to all five bars
   .attr('height', function(d){
     return d/10 * 1.5;
   })
   .attr('y', function(d){
     return 150 - d/10 * 1.5;
   });</code></pre>
+
+  		<p>This may appear confusing (merging the selection into itself? what?), but follow this pattern to add new elements, then update all elements both old and new.</p>
 					
 				</section>
 
