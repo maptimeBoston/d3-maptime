@@ -1,7 +1,7 @@
 <html>
 <head>
-	<script src="http://d3js.org/d3.v3.min.js"></script>
-	<script src="http://d3js.org/d3.geo.projection.v0.min.js"></script>
+	<script src="https://d3js.org/d3.v4.min.js"></script>
+	<script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
 	<style>
 		path{ stroke: #999; fill: #eee;}
 		#boundary path{ fill: #f2f9ff; stroke: none;}		
@@ -24,13 +24,13 @@ var boundary = svg.append("g")
 var countries = svg.append( "g" )
 	.attr( "id", "countries" );
 
-var projection = d3.geo.robinson()
+var projection = d3.geoRobinson()
     .scale(150)
     .center([0,27])
     .rotate([-100,0] )
     .translate([width / 2, height / 2]);
 
-var path = d3.geo.path()
+var path = d3.geoPath()
 	.projection( projection );
 
 var boundaryFeature = {type:"Feature",geometry:{

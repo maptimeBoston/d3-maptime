@@ -28,17 +28,17 @@ d3.json( "countries.json", function( json )
 	})	
 });
 
-var colorScale = d3.scale.linear()
+var colorScale = d3.scaleLinear()
     .domain([-180, -120, -60, 0, 60, 120, 180])
     .range(['#1b9e77', '#d95f02', '#7570b3', '#e7298a', '#66a61e', '#e6ab02', '#1b9e77']);
 
-var pastelScale = d3.scale.linear()
+var pastelScale = d3.scaleLinear()
     .domain([-180, -120, -60, 0, 60, 120, 180])
     .range(['#fbb4ae', '#b3cde3', '#ccebc5', '#decbe4', '#fed9a6', '#ffffcc', '#fbb4ae']);
 
 function build_map()
 {	
-	mapProjection = d3.geo.orthographic()
+	mapProjection = d3.geoOrthographic()
 	    .scale( size / 2 )
 	    .translate( [ size, size / 1.5] )
 	    .clipAngle( 90 )
@@ -52,7 +52,7 @@ function build_map()
 		.append( "g" )
 			.attr( "id", "map" );
 	
-	path = d3.geo.path()
+	path = d3.geoPath()
 	    .projection( mapProjection );
 	    
 	var filter = map.append( "svg:defs" )
@@ -114,7 +114,7 @@ function build_map()
 		.attr("d",path);
 
 	graticule.selectAll("path")
-		.data( d3.geo.graticule().step([20,20]).lines() )
+		.data( d3.geoGraticule().step([20,20]).lines() )
 		.enter()
 		.append("path")
 		.attr("vector-effect","non-scaling-stroke")

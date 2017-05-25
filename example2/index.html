@@ -1,7 +1,7 @@
 <html>
 <head>
   <title>A D3 chart</title>
-  <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+  <script src="https://d3js.org/d3.v4.min.js"></script>
 </head>
 <body>
   <script>
@@ -24,10 +24,8 @@ function drawChart( dataArray ){
         return i*25;
       })
       .attr( "width", 15 )
-      .attr( "fill", "#d1c9b8" );
-
-    // set bar heights based on data
-    selection
+      .attr( "fill", "#d1c9b8" )
+      .merge(selection) // merge new elements with existing ones, so everything below applies to all
       .attr( "height", function(d){
         return d/10 * 1.5;
       })

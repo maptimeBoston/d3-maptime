@@ -1,7 +1,7 @@
 <html>
 <head>
   <title>A D3 map</title>
-  <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+  <script src="https://d3js.org/d3.v4.min.js"></script>
   <script src="neighborhoods.js"></script>
   <script src="rodents.js"></script>
   <style>
@@ -29,13 +29,13 @@ var svg = d3.select( "body" )
 
 var neighborhoods = svg.append( "g" ).attr( "id", "neighborhoods" );
 
-var albersProjection = d3.geo.albers()
+var albersProjection = d3.geoAlbers()
   .scale( 190000 )
   .rotate( [71.057,0] )
   .center( [0, 42.313] )
   .translate( [width/2,height/2] );
 
-var geoPath = d3.geo.path()
+var geoPath = d3.geoPath()
     .projection( albersProjection );
 
 neighborhoods.selectAll( "path" )
